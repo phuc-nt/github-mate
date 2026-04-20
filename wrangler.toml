@@ -1,0 +1,33 @@
+name = "github-mate"
+main = ".open-next/worker.js"
+compatibility_date = "2025-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Assets served by OpenNext
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# Workers AI — llama-3.3-70b + bge-base-en-v1.5
+[ai]
+binding = "AI"
+
+# D1 — profiles (inline KG+vault), sessions, match_history, top20_authors
+[[d1_databases]]
+binding = "DB"
+database_name = "github_mate"
+database_id = "c974392b-fc01-4f20-a4a0-dc7bd9b2cdb4"
+migrations_dir = "migrations"
+
+# KV — GitHub API response cache
+[[kv_namespaces]]
+binding = "CACHE"
+id = "f53e0234d0fd427eba68fbbbd54b1b8c"
+
+# Cron — weekly Top 20 refresh, Sunday 00:00 UTC (sync build, no queue)
+[triggers]
+crons = ["0 0 * * 0"]
+
+# Observability
+[observability]
+enabled = true

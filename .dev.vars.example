@@ -1,0 +1,14 @@
+# Copy to .dev.vars and fill in values. .dev.vars is gitignored.
+# For production, set via: wrangler secret put <NAME>
+
+# GitHub Personal Access Token — scopes: public_repo, read:user
+# Used as shared fallback when user not OAuth-authenticated + by system cron
+GITHUB_TOKEN=ghp_xxx
+
+# GitHub OAuth App credentials — register at https://github.com/settings/developers
+# Callback URL: http://localhost:3000/api/auth/github/callback (dev) and https://<prod-domain>/api/auth/github/callback
+GITHUB_CLIENT_ID=Iv1.xxx
+GITHUB_CLIENT_SECRET=xxx
+
+# Session signing key — generate with: openssl rand -hex 32
+SESSION_SECRET=xxx
