@@ -24,6 +24,7 @@ worker-configuration.d.ts
 # Generated type files
 next-env.d.ts
 cloudflare-env.d.ts
+*.tsbuildinfo
 
 # Logs
 *.log
@@ -54,4 +55,3 @@ tmp/
 .claude/
 plans/
 CLAUDE.md
-docs/dev-logs/
