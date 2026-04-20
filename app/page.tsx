@@ -1,11 +1,22 @@
+import { Suspense } from "react";
+import UrlInputForm from "./components/url-input-form";
+
 export default function HomePage() {
   return (
-    <main style={{ maxWidth: 640, margin: "4rem auto", padding: "0 1rem" }}>
-      <h1>GitHub Mate</h1>
-      <p>Paste two GitHub profile URLs to see how they match.</p>
-      <p style={{ color: "#888", fontSize: 14 }}>
-        Bootstrap placeholder. UI shipped in phase-06.
+    <section style={{ maxWidth: 560, margin: "3rem auto" }}>
+      <h1 style={{ fontSize: "2.25rem", margin: 0, color: "#f8fafc" }}>
+        Match two GitHub devs
+      </h1>
+      <p style={{ color: "#94a3b8", margin: "0.75rem 0 2rem" }}>
+        Paste two profile URLs. We build a knowledge graph for each and score
+        their tech overlap, interest similarity, and complementary skills.
       </p>
-    </main>
+      <Suspense fallback={null}>
+        <UrlInputForm />
+      </Suspense>
+      <p style={{ color: "#64748b", fontSize: "0.85rem", marginTop: "1.5rem" }}>
+        Sign in with GitHub to use your own rate limit (optional).
+      </p>
+    </section>
   );
 }
