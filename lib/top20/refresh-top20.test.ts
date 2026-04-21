@@ -93,13 +93,16 @@ describe("refreshTop20", () => {
     const orig = globalThis.fetch;
     const fetchMock = vi.fn(async (url: string | URL, init?: RequestInit) => {
       const u = String(url);
-      if (u.includes("github-trending-api")) {
+      if (u.includes("api.github.com/search/repositories")) {
         return new Response(
-          JSON.stringify([
-            { author: "alice", name: "r1", language: "Python" },
-            { author: "bob", name: "r2", language: "Go" },
-            { author: "alice", name: "r3", language: "Python" },
-          ]),
+          JSON.stringify({
+            items: [
+              { name: "r1", language: "Python", owner: { login: "alice", type: "User" } },
+              { name: "r2", language: "Go", owner: { login: "bob", type: "User" } },
+              { name: "r3", language: "Python", owner: { login: "alice", type: "User" } },
+              { name: "r4", language: "Rust", owner: { login: "someorg", type: "Organization" } },
+            ],
+          }),
           { status: 200, headers: { "Content-Type": "application/json" } },
         );
       }

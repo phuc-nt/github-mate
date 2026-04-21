@@ -24,9 +24,10 @@ migrations_dir = "migrations"
 binding = "CACHE"
 id = "f53e0234d0fd427eba68fbbbd54b1b8c"
 
-# Cron — weekly Top 20 refresh, Sunday 00:00 UTC (sync build, no queue)
-[triggers]
-crons = ["0 0 * * 0"]
+# Cron deferred — OpenNext scheduled() handler not wired yet.
+# Weekly Top 20 refresh via admin POST (see docs/deployment-guide.md).
+# [triggers]
+# crons = ["0 0 * * 0"]
 
 # Observability
 [observability]

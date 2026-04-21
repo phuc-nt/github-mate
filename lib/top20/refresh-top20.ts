@@ -27,7 +27,7 @@ function sleep(ms: number): Promise<void> {
 
 export async function refreshTop20(deps: RefreshDeps): Promise<RefreshResult> {
   const max = deps.maxAuthors ?? 20;
-  const trending = await fetchTrendingAuthors();
+  const trending = await fetchTrendingAuthors(deps.token);
   const top = trending.slice(0, max);
 
   const processed: string[] = [];
